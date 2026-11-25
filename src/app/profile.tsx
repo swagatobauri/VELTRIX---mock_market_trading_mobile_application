@@ -1,0 +1,309 @@
+import MarketCountdown from "@/components/MarketCountdown";
+import { COLORS } from "@/constants/theme";
+import { usePortfolioStore } from "@/store/portfolioStore";
+import { useThemeStore } from "@/store/themeStore";
+import { formatINR } from "@/utils/formatCurrency";
+import { Ionicons } from "@expo/vector-icons";
+import {
+  Alert,
+  ScrollView,
+  StatusBar,
+  Switch,
+  Text,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+} from "react-native";
+
+type SettingRowProps = {
+  icon: keyof typeof Ionicons.glyphMap;
+  label: string;
+  value?: string;
+  onPress?: () => void;
+  danger?: boolean;
+  rightElement?: React.ReactNode;
+};
+
+function SettingRow({
+  icon,
+  label,
+  value,
+  onPress,
+  danger,
+  rightElement,
+}: SettingRowProps) {
+  const isDark = useThemeStore((state) => state.isDark);
+
+  return (
+    <TouchableOpacity
+      className="flex-row items-center justify-between py-4 border-b border-border"
+      onPress={onPress}
+      activeOpacity={onPress ? 0.7 : 1}
+    >
+      <View className="flex-row items-center">
+        <View
+          className={`w-8 h-8 rounded-lg items-center justify-center mr-3 ${
+            danger ? "bg-danger-subtle" : "bg-background"
+          }`}
+        >
+          <Ionicons
+            name={icon}
+            size={18}
+            color={danger ? COLORS.red : COLORS.primary}
+          />
+        </View>
+        <Text
+          className={`text-base font-medium ${
+            danger ? "text-danger" : "text-primary-content"
+          }`}
+        >
+          {label}
+        </Text>
+      </View>
+
+      {rightElement ? (
+        rightElement
+      ) : value ? (
+        <Text className="text-secondary text-sm">{value}</Text>
+      ) : onPress ? (
+        <Ionicons
+          name="chevron-forward"
+          size={18}
+          color={isDark ? "#8B949E" : COLORS.textSecondary}
+        />
+      ) : null}
+    </TouchableOpacity>
+  );
+}
+
+export default function ProfileScreen() {
+  const { cash, holdings, orders, resetPortfolio } = usePortfolioStore();
+  const realizedPnl = usePortfolioStore((state) => state.realizedPnl);
+  const { toggleTheme } = useThemeStore();
+
+  const scheme = useColorScheme();
+  const isDark = scheme === "dark";
+
+  const investedValue = holdings.reduce(
+    (sum, h) => sum + h.avgPrice * h.quantity,
+    0,
+  );
+  const currentValue = holdings.reduce(
+    (sum, h) => sum + h.currentPrice * h.quantity,
+    0,
+  );
+  const totalPnl = currentValue - investedValue;
+  const isProfit = totalPnl >= 0;
+  const totalPortfolioValue = cash + currentValue;
+
+  const handleReset = () => {
+    Alert.alert(
+      "Reset Portfolio",
+      "This will reset your portfolio to ₹1,00,000 and clear all holdings and orders. Are you sure?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Reset",
+          style: "destructive",
+          onPress: () => {
+            resetPortfolio();
+            Alert.alert("Done", "Portfolio has been reset to ₹1,00,000");
+          },
+        },
+      ],
+    );
+  };
+
+  return (
+    <View className="flex-1 bg-background">
+      <StatusBar
+        barStyle={isDark ? "light-content" : "dark-content"}
+        backgroundColor={isDark ? "#0D1117" : "#F8F9FA"}
+      />
+
+      {/* Header */}
+      <View className="bg-surface pt-14 px-5 pb-4 border-b border-border">
+        <Text className="text-2xl font-bold text-primary-content">Profile</Text>
+        <Text className="text-sm text-secondary mt-1">Account & Settings</Text>
+      </View>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ padding: 20 }}
+      >
+        {/* Avatar + Name */}
+        <View className="items-center mb-6">
+          <View className="w-20 h-20 rounded-full bg-primary items-center justify-center mb-3">
+            <Text className="text-white text-3xl font-bold">SB</Text>
+          </View>
+          <Text className="text-xl font-bold text-primary-content">Swagato Bauri</Text>
+          <Text className="text-sm text-secondary mt-1">
+            Paper Trader · VELTRIX
+          </Text>
+        </View>
+
+        {/* Portfolio Stats Card */}
+        <View className="bg-surface rounded-2xl p-4 border border-border mb-4">
+          <Text className="text-base font-bold text-primary-content mb-3">
+            Portfolio Summary
+          </Text>
+          <View className="flex-row justify-between mb-3">
+            <View className="items-center flex-1">
+              <Text className="text-xs text-secondary">Total Value</Text>
+              <Text className="text-base font-bold text-primary-content mt-1">
+                ₹{formatINR(totalPortfolioValue, 0)}
+              </Text>
+            </View>
+            <View className="w-px bg-border" />
+            <View className="items-center flex-1">
+              <Text className="text-xs text-secondary">Overall P&L</Text>
+              <Text
+                className={`text-base font-bold mt-1 ${isProfit ? "text-success" : "text-danger"}`}
+              >
+                {isProfit ? "+" : "-"}₹{formatINR(Math.abs(totalPnl), 0)}
+              </Text>
+            </View>
+            <View className="w-px bg-border" />
+            <View className="items-center flex-1">
+              <Text className="text-xs text-secondary">Orders</Text>
+              <Text className="text-base font-bold text-primary-content mt-1">
+                {orders.length}
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        {/* P&L Breakdown Card */}
+        <View className="bg-surface rounded-2xl p-4 border border-border mb-4">
+          <Text className="text-base font-bold text-primary-content mb-3">
+            P&L Breakdown
+          </Text>
+          <View className="flex-row justify-between mb-3">
+            <View className="flex-1 mr-2">
+              <Text className="text-xs text-secondary">Unrealized P&L</Text>
+              <Text
+                className={`text-base font-bold mt-1 ${totalPnl > 0 ? "text-success" : totalPnl < 0 ? "text-danger" : "text-primary-content"}`}
+              >
+                {totalPnl > 0 ? "+" : totalPnl < 0 ? "-" : ""}₹
+                {formatINR(Math.abs(totalPnl), 0)}
+              </Text>
+              <Text className="text-xs text-secondary mt-0.5">
+                Open positions
+              </Text>
+            </View>
+            <View className="w-px bg-border" />
+            <View className="flex-1 ml-2">
+              <Text className="text-xs text-secondary">Realized P&L</Text>
+              <Text
+                className={`text-base font-bold mt-1 ${realizedPnl > 0 ? "text-success" : realizedPnl < 0 ? "text-danger" : "text-primary-content"}`}
+              >
+                {realizedPnl > 0 ? "+" : realizedPnl < 0 ? "-" : ""}₹
+                {formatINR(Math.abs(realizedPnl), 0)}
+              </Text>
+              <Text className="text-xs text-secondary mt-0.5">
+                Closed trades
+              </Text>
+            </View>
+          </View>
+          <View className="h-px bg-border mb-3" />
+          <View className="flex-row justify-between">
+            <Text className="text-sm text-secondary font-medium">
+              Total P&L
+            </Text>
+            <Text
+              className={`text-sm font-bold ${totalPnl + realizedPnl >= 0 ? "text-success" : "text-danger"}`}
+            >
+              {totalPnl + realizedPnl >= 0 ? "+" : "-"}₹
+              {formatINR(Math.abs(totalPnl + realizedPnl), 0)}
+            </Text>
+          </View>
+        </View>
+
+        {/* Market Status Card */}
+        <View className="bg-surface rounded-2xl p-4 border border-border mb-4">
+          <Text className="text-base font-bold text-primary-content mb-3">
+            Market Status
+          </Text>
+          <MarketCountdown />
+        </View>
+
+        {/* Appearance Section */}
+        <View className="bg-surface rounded-2xl px-4 border border-border mb-4">
+          <Text className="text-xs text-secondary font-semibold pt-4 pb-2">
+            APPEARANCE
+          </Text>
+          <SettingRow
+            icon="moon-outline"
+            label="Dark Mode"
+            rightElement={
+              <Switch
+                value={isDark}
+                onValueChange={toggleTheme}
+                trackColor={{ false: "#E8ECF0", true: COLORS.primary }}
+                thumbColor={COLORS.white}
+              />
+            }
+          />
+        </View>
+
+        {/* Account Section */}
+        <View className="bg-surface rounded-2xl px-4 border border-border mb-4">
+          <Text className="text-xs text-secondary font-semibold pt-4 pb-2">
+            ACCOUNT
+          </Text>
+          <SettingRow icon="person-outline" label="Name" value="Swagato Bauri" />
+          <SettingRow
+            icon="cash-outline"
+            label="Starting Balance"
+            value="₹1,00,000"
+          />
+          <SettingRow
+            icon="wallet-outline"
+            label="Available Cash"
+            value={`₹${formatINR(cash)}`}
+          />
+          <SettingRow
+            icon="layers-outline"
+            label="Holdings"
+            value={`${holdings.length} stocks`}
+          />
+        </View>
+
+        {/* App Section */}
+        <View className="bg-surface rounded-2xl px-4 border border-border mb-4">
+          <Text className="text-xs text-secondary font-semibold pt-4 pb-2">
+            APP
+          </Text>
+          <SettingRow
+            icon="information-circle-outline"
+            label="Version"
+            value="1.0.0"
+          />
+          <SettingRow
+            icon="code-slash-outline"
+            label="Built with"
+            value="Expo + NativeWind"
+          />
+          <SettingRow
+            icon="business-outline"
+            label="Market"
+            value="NSE India"
+          />
+        </View>
+
+        {/* Danger Section */}
+        <View className="bg-surface rounded-2xl px-4 border border-border mb-4">
+          <Text className="text-xs text-secondary font-semibold pt-4 pb-2">
+            DANGER ZONE
+          </Text>
+          <SettingRow
+            icon="refresh-outline"
+            label="Reset Portfolio"
+            onPress={handleReset}
+            danger
+          />
+        </View>
+      </ScrollView>
+    </View>
+  );
+}
