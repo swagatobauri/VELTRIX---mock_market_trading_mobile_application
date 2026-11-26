@@ -4,83 +4,6 @@ A paper trading simulator app built with React Native (Expo) that lets you pract
 
 ---
 
-## ▶️ [Video Demo](https://drive.google.com/file/d/1_5m06uJUBLnMN9R1Qulu4PlUSDyIwhIu/view?usp=drive_link)
-<div align="center">
-  
-https://github.com/user-attachments/assets/51f552f7-9f76-4a10-af36-8531f9448f3d
-</div>
-
-
-
----
-
-## 📱 Screenshots
-
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center">
-      <b>Onboarding 1</b><br/>
-      <img src="./assets/screens/OnboardingScreen1.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Onboarding 2</b><br/>
-      <img src="./assets/screens/OnboardingScreen2.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Onboarding 3</b><br/>
-      <img src="./assets/screens/OnboardingScreen3.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Notice Modal</b><br/>
-      <img src="./assets/screens/NoticeModal.jpg" width="150"/>
-    </td>
-  </tr>
-
-  <tr>
-    <td align="center">
-      <b>Market/Home</b><br/>
-      <img src="./assets/screens/MarketScreen.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Portfolio</b><br/>
-      <img src="./assets/screens/PortfolioScreen.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Orders</b><br/>
-      <img src="./assets/screens/OrdersScreen.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Stock Details</b><br/>
-      <img src="./assets/screens/StockDetailsScreen.jpg" width="150"/>
-    </td>
-  </tr>
-
-  <tr>
-    <td align="center">
-      <b>Search</b><br/>
-      <img src="./assets/screens/SearchScreen.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Market/Home Dark</b><br/>
-      <img src="./assets/screens/MarketScreen-Dark.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Stock Details Dark</b><br/>
-      <img src="./assets/screens/StockDetailsScreen-Dark.jpg" width="150"/>
-    </td>
-    <td align="center">
-      <b>Profile Dark</b><br/>
-      <img src="./assets/screens/ProfileScreen-Dark.jpg" width="150"/>
-    </td>
-  </tr>
-</table>
-
-</div>
-
----
-
 ## ✨ Features
 
 - 📊 **Live Market Data** — Real US stock prices fetched from Finnhub API every 30 seconds
@@ -224,9 +147,6 @@ Live prices update only during market hours. Outside hours, last closing prices 
 ## 👨‍💻 Built By
 
 **Swagato Bauri** — Built as a portfolio project to demonstrate full-stack mobile development skills.
-
-- 🔗 [LinkedIn](https://linkedin.com/in/yourprofile)
-- 🐱 [GitHub](https://github.com/swagatobauri)
 
 ---
 
