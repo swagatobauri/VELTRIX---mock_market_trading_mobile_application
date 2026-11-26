@@ -57,7 +57,7 @@ export default function StockCard({ stock }: Props) {
             {stock.name}
           </Text>
           {ownedQuantity > 0 && (
-            <View className="flex-row items-center bg-orange-50 px-2 py-0.5 rounded-lg mt-1 self-start border border-primary/20">
+            <View className="flex-row items-center bg-warn-subtle px-2 py-0.5 rounded-lg mt-1 self-start border border-primary/30">
               <Text className="text-primary text-xs font-semibold">
                 {ownedQuantity} owned
               </Text>
@@ -72,7 +72,7 @@ export default function StockCard({ stock }: Props) {
           ₹{formatINR(stock.price)}
         </Text>
         <View
-          className={`flex-row items-center px-2 py-0.5 rounded-lg mt-1 ${isPositive ? "bg-green-100" : "bg-red-100"}`}
+          className={`flex-row items-center px-2 py-0.5 rounded-lg mt-1 ${isPositive ? "bg-success-subtle" : "bg-danger-subtle"}`}
         >
           <Ionicons
             name={isPositive ? "arrow-up" : "arrow-down"}

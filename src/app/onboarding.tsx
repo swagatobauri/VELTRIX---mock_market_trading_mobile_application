@@ -77,8 +77,8 @@ export default function OnboardingScreen({ onDone }: Props) {
   };
 
   return (
-    <View className="flex-1" style={{ backgroundColor: "#FFF8F3" }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFF8F3" />
+    <View className="flex-1" style={{ backgroundColor: "#25252D" }}>
+      <StatusBar barStyle="light-content" backgroundColor="#25252D" />
 
       {/* Skip Button */}
       <View className="absolute top-14 right-5 z-10">
@@ -108,7 +108,7 @@ export default function OnboardingScreen({ onDone }: Props) {
             {item.type === "image" ? (
               <View
                 className="w-56 h-56 rounded-full items-center justify-center mb-10 overflow-hidden"
-                style={{ backgroundColor: "#FFE0C2" }}
+                style={{ backgroundColor: "#2E2E38", borderWidth: 2, borderColor: "#6B6583" }}
               >
                 <Image
                   source={require("../../assets/images/mmicon1.png")}
@@ -119,7 +119,7 @@ export default function OnboardingScreen({ onDone }: Props) {
             ) : (
               <View
                 className="w-56 h-56 rounded-full items-center justify-center mb-10"
-                style={{ backgroundColor: "#FFE0C2" }}
+                style={{ backgroundColor: "#2E2E38", borderWidth: 2, borderColor: "#6B6583" }}
               >
                 <Ionicons name={item.icon!} size={100} color={COLORS.primary} />
               </View>
@@ -127,14 +127,14 @@ export default function OnboardingScreen({ onDone }: Props) {
 
             {/* Text */}
             <Text
-              className="text-3xl font-extrabold text-primary-content text-center"
-              style={{ lineHeight: 38 }}
+              className="text-3xl font-extrabold text-center"
+              style={{ lineHeight: 38, color: "#F5F4F0" }}
             >
               {item.title}
             </Text>
             <Text
-              className="text-base text-secondary text-center mt-4"
-              style={{ lineHeight: 24 }}
+              className="text-base text-center mt-4"
+              style={{ lineHeight: 24, color: "#9E98B3" }}
             >
               {item.subtitle}
             </Text>
@@ -167,7 +167,7 @@ export default function OnboardingScreen({ onDone }: Props) {
           onPress={handleNext}
           activeOpacity={0.8}
         >
-          <Text className="text-white font-bold text-base">
+          <Text className="font-bold text-base" style={{ color: "#1E1E24" }}>
             {currentIndex === SLIDES.length - 1 ? "Get Started" : "Next"}
           </Text>
         </TouchableOpacity>

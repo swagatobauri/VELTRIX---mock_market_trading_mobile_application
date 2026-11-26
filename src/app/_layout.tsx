@@ -16,8 +16,8 @@ export default function RootLayout() {
   const isDark = scheme === "dark";
 
   const tabBarStyle = {
-    backgroundColor: isDark ? "#161B22" : COLORS.surface,
-    borderTopColor: isDark ? "#21262D" : COLORS.border,
+    backgroundColor: isDark ? "#2E2E38" : "#FFFFFF",
+    borderTopColor: isDark ? "#3D3B4A" : "#E3DFD7",
     borderTopWidth: 1,
     height: 60,
     paddingBottom: 8,
@@ -48,7 +48,7 @@ export default function RootLayout() {
           headerShown: false,
           tabBarStyle,
           tabBarActiveTintColor: COLORS.primary,
-          tabBarInactiveTintColor: isDark ? "#8B949E" : COLORS.textSecondary,
+          tabBarInactiveTintColor: isDark ? "#9E98B3" : "#6B6583",
           tabBarLabelStyle: { fontSize: 11, fontWeight: "600" },
         }}
       >

@@ -22,7 +22,7 @@ export default function DisclaimerModal({ visible, onAccept }: Props) {
         <View className="bg-surface rounded-3xl p-6 w-full">
           {/* Icon */}
           <View className="items-center mb-4">
-            <View className="w-16 h-16 rounded-full bg-orange-50 items-center justify-center">
+            <View className="w-16 h-16 rounded-full bg-warn-subtle items-center justify-center">
               <Ionicons
                 name="information-circle"
                 size={40}
@@ -42,7 +42,7 @@ export default function DisclaimerModal({ visible, onAccept }: Props) {
           {/* Disclaimer Points */}
           <View className="bg-background rounded-2xl p-4 mb-5 border border-border">
             <View className="flex-row items-start mb-3">
-              <View className="w-6 h-6 rounded-full bg-orange-100 items-center justify-center mr-3 mt-0.5">
+              <View className="w-6 h-6 rounded-full bg-warn-subtle items-center justify-center mr-3 mt-0.5">
                 <Ionicons
                   name="school-outline"
                   size={14}
@@ -61,7 +61,7 @@ export default function DisclaimerModal({ visible, onAccept }: Props) {
             </View>
 
             <View className="flex-row items-start mb-3">
-              <View className="w-6 h-6 rounded-full bg-orange-100 items-center justify-center mr-3 mt-0.5">
+              <View className="w-6 h-6 rounded-full bg-warn-subtle items-center justify-center mr-3 mt-0.5">
                 <Ionicons
                   name="pulse-outline"
                   size={14}
@@ -81,7 +81,7 @@ export default function DisclaimerModal({ visible, onAccept }: Props) {
             </View>
 
             <View className="flex-row items-start mb-3">
-              <View className="w-6 h-6 rounded-full bg-orange-100 items-center justify-center mr-3 mt-0.5">
+              <View className="w-6 h-6 rounded-full bg-warn-subtle items-center justify-center mr-3 mt-0.5">
                 <Ionicons
                   name="bar-chart-outline"
                   size={14}
@@ -100,7 +100,7 @@ export default function DisclaimerModal({ visible, onAccept }: Props) {
             </View>
 
             <View className="flex-row items-start mb-3">
-              <View className="w-6 h-6 rounded-full bg-orange-100 items-center justify-center mr-3 mt-0.5">
+              <View className="w-6 h-6 rounded-full bg-warn-subtle items-center justify-center mr-3 mt-0.5">
                 <Ionicons
                   name="wallet-outline"
                   size={14}
@@ -119,7 +119,7 @@ export default function DisclaimerModal({ visible, onAccept }: Props) {
             </View>
 
             <View className="flex-row items-start">
-              <View className="w-6 h-6 rounded-full bg-orange-100 items-center justify-center mr-3 mt-0.5">
+              <View className="w-6 h-6 rounded-full bg-warn-subtle items-center justify-center mr-3 mt-0.5">
                 <Ionicons
                   name="alert-circle-outline"
                   size={14}
@@ -144,7 +144,7 @@ export default function DisclaimerModal({ visible, onAccept }: Props) {
             onPress={onAccept}
             activeOpacity={0.8}
           >
-            <Text className="text-white font-bold text-base">I Understand</Text>
+            <Text className="text-on-primary font-bold text-base">I Understand</Text>
           </TouchableOpacity>
 
           {/* Footer */}

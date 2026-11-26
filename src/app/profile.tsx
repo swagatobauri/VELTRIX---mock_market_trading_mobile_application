@@ -69,7 +69,7 @@ function SettingRow({
         <Ionicons
           name="chevron-forward"
           size={18}
-          color={isDark ? "#8B949E" : COLORS.textSecondary}
+          color={isDark ? "#9E98B3" : "#6B6583"}
         />
       ) : null}
     </TouchableOpacity>
@@ -118,7 +118,7 @@ export default function ProfileScreen() {
     <View className="flex-1 bg-background">
       <StatusBar
         barStyle={isDark ? "light-content" : "dark-content"}
-        backgroundColor={isDark ? "#0D1117" : "#F8F9FA"}
+        backgroundColor={isDark ? "#25252D" : "#F6F4EF"}
       />
 
       {/* Header */}
@@ -134,7 +134,7 @@ export default function ProfileScreen() {
         {/* Avatar + Name */}
         <View className="items-center mb-6">
           <View className="w-20 h-20 rounded-full bg-primary items-center justify-center mb-3">
-            <Text className="text-white text-3xl font-bold">SB</Text>
+            <Text className="text-on-primary text-3xl font-bold">SB</Text>
           </View>
           <Text className="text-xl font-bold text-primary-content">Swagato Bauri</Text>
           <Text className="text-sm text-secondary mt-1">
@@ -239,7 +239,7 @@ export default function ProfileScreen() {
               <Switch
                 value={isDark}
                 onValueChange={toggleTheme}
-                trackColor={{ false: "#E8ECF0", true: COLORS.primary }}
+                trackColor={{ false: "#E3DFD7", true: COLORS.primary }}
                 thumbColor={COLORS.white}
               />
             }

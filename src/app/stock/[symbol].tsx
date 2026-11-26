@@ -115,7 +115,7 @@ export default function StockDetailScreen() {
 
   return (
     <View className="flex-1 bg-background">
-      <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
+      <StatusBar barStyle="light-content" backgroundColor="#25252D" />
 
       {/* Header */}
       <View className="bg-surface pt-14 px-5 pb-4 border-b border-border flex-row items-center">
@@ -144,7 +144,7 @@ export default function StockDetailScreen() {
             ₹{formatINR(livePrice)}
           </Text>
           <View
-            className={`flex-row items-center mt-1 self-start px-2 py-1 rounded-lg ${liveIsPositive ? "bg-green-100" : "bg-red-100"}`}
+            className={`flex-row items-center mt-1 self-start px-2 py-1 rounded-lg ${liveIsPositive ? "bg-success-subtle" : "bg-danger-subtle"}`}
           >
             <Ionicons
               name={liveIsPositive ? "arrow-up" : "arrow-down"}
@@ -168,7 +168,7 @@ export default function StockDetailScreen() {
                 onPress={() => setSelectedFilter(filter)}
               >
                 <Text
-                  className={`text-xs font-semibold ${selectedFilter === filter ? "text-white" : "text-secondary"}`}
+                  className={`text-xs font-semibold ${selectedFilter === filter ? "text-on-primary" : "text-secondary"}`}
                 >
                   {filter}
                 </Text>
@@ -185,10 +185,10 @@ export default function StockDetailScreen() {
               <Ionicons
                 name="bar-chart-outline"
                 size={14}
-                color={chartType === "candle" ? "#fff" : COLORS.textSecondary}
+                color={chartType === "candle" ? COLORS.onPrimary : COLORS.textSecondary}
               />
               <Text
-                className={`text-xs font-semibold ml-1 ${chartType === "candle" ? "text-white" : "text-secondary"}`}
+                className={`text-xs font-semibold ml-1 ${chartType === "candle" ? "text-on-primary" : "text-secondary"}`}
               >
                 Candle
               </Text>
@@ -200,10 +200,10 @@ export default function StockDetailScreen() {
               <Ionicons
                 name="trending-up-outline"
                 size={14}
-                color={chartType === "line" ? "#fff" : COLORS.textSecondary}
+                color={chartType === "line" ? COLORS.onPrimary : COLORS.textSecondary}
               />
               <Text
-                className={`text-xs font-semibold ml-1 ${chartType === "line" ? "text-white" : "text-secondary"}`}
+                className={`text-xs font-semibold ml-1 ${chartType === "line" ? "text-on-primary" : "text-secondary"}`}
               >
                 Line
               </Text>
@@ -376,7 +376,7 @@ export default function StockDetailScreen() {
             </View>
 
             {quantity > ownedQuantity && ownedQuantity > 0 && (
-              <View className="flex-row items-center mt-3 bg-red-100 px-3 py-2 rounded-xl">
+              <View className="flex-row items-center mt-3 bg-danger-subtle px-3 py-2 rounded-xl">
                 <Ionicons name="warning-outline" size={14} color={COLORS.red} />
                 <Text className="text-danger text-xs ml-2">
                   You only have {ownedQuantity} shares to sell
@@ -385,7 +385,7 @@ export default function StockDetailScreen() {
             )}
 
             {ownedQuantity === 0 && (
-              <View className="flex-row items-center mt-3 bg-orange-50 px-3 py-2 rounded-xl">
+              <View className="flex-row items-center mt-3 bg-warn-subtle px-3 py-2 rounded-xl">
                 <Ionicons
                   name="information-circle-outline"
                   size={14}

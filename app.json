@@ -6,11 +6,11 @@
     "orientation": "portrait",
     "icon": "./assets/images/mmicon1.png",
     "scheme": "veltrix",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "android": {
       "package": "com.swagatobauri.veltrix",
       "adaptiveIcon": {
-        "backgroundColor": "#f27c22",
+        "backgroundColor": "#25252D",
         "foregroundImage": "./assets/images/mmicon1.png"
       },
       "predictiveBackGestureEnabled": false
@@ -21,10 +21,10 @@
     },
     "plugins": [
       "expo-router",
-      [
+        [
         "expo-splash-screen",
         {
-          "backgroundColor": "#f27c22",
+          "backgroundColor": "#25252D",
           "image": "./assets/images/mmicon1.png",
           "imageWidth": 500,
           "resizeMode": "contain"

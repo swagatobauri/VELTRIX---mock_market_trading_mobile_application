@@ -4,80 +4,86 @@
 @import "nativewind/theme";
 
 @layer utilities {
-  /* Semantic — light mode defaults */
+  /* Semantic — light mode defaults (Warm Alabaster & Dusty Slate) */
   .bg-background {
-    background-color: #f8f9fa;
+    background-color: #f6f4ef;
   }
   .bg-surface {
     background-color: #ffffff;
   }
   .border-border {
-    border-color: #e8ecf0;
+    border-color: #e3dfd7;
   }
   .text-primary-content {
-    color: #1a1a2e;
+    color: #1f1f26;
   }
   .text-secondary {
-    color: #6b7280;
+    color: #6b6583;
   }
   .bg-success-subtle {
     background-color: #dcfce7;
   }
   .bg-danger-subtle {
-    background-color: #fee2e2;
+    background-color: #ffe4e6;
   }
   .bg-warn-subtle {
-    background-color: #fff7ed;
+    background-color: #fef3c7;
   }
 
-  /* Fixed — same in both modes */
+  /* Brand — Amber Gold & Editorial Trading Accents */
   .bg-primary {
-    background-color: #ff6b00;
+    background-color: #f6c445;
   }
   .bg-primary-light {
-    background-color: #ff8c00;
+    background-color: #ffd56b;
   }
   .text-primary {
-    color: #ff6b00;
+    color: #d49b1a;
+  }
+  .text-on-primary {
+    color: #1e1e24;
   }
   .text-success {
-    color: #00a86b;
+    color: #10b981;
   }
   .text-danger {
-    color: #ff3d57;
+    color: #f43f5e;
   }
   .bg-success {
-    background-color: #00a86b;
+    background-color: #10b981;
   }
   .bg-danger {
-    background-color: #ff3d57;
+    background-color: #f43f5e;
   }
 }
 
-/* Dark mode overrides — NativeWind activates this block via colorScheme.set('dark') */
+/* Dark mode overrides — Deep Velvet Charcoal, Amber Gold & Dusty Violet */
 @media (prefers-color-scheme: dark) {
   .bg-background {
-    background-color: #0d1117;
+    background-color: #25252d;
   }
   .bg-surface {
-    background-color: #161b22;
+    background-color: #2e2e38;
   }
   .border-border {
-    border-color: #21262d;
+    border-color: #3d3b4a;
   }
   .text-primary-content {
-    color: #ffffff;
+    color: #f5f4f0;
   }
   .text-secondary {
-    color: #8b949e;
+    color: #9e98b3;
+  }
+  .text-primary {
+    color: #f6c445;
   }
   .bg-success-subtle {
-    background-color: #0a2e1a;
+    background-color: #102e24;
   }
   .bg-danger-subtle {
-    background-color: #2e0a0f;
+    background-color: #361820;
   }
   .bg-warn-subtle {
-    background-color: #2e1500;
+    background-color: #3a3118;
   }
 }

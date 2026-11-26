@@ -121,7 +121,7 @@ export default function OrdersScreen() {
 
   return (
     <View className="flex-1 bg-background">
-      <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
+      <StatusBar barStyle="light-content" backgroundColor="#25252D" />
 
       {/* Header */}
       <View className="bg-surface pt-14 px-5 pb-4 border-b border-border">
